@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <title>Calculator App</title>
+        <style>
+            * {
+                  margin: 0;
+                  padding: 0;
+                  box-sizing: border-box;
+                }
+
+                body {
+                  font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                  background: #f4f6f9;
+                  display: flex;
+                  justify-content: center;
+                  align-items: center;
+                  height: 100vh;
+                }
+
+                .container {
+                  background: #fff;
+                  padding: 30px 40px;
+                  border-radius: 12px;
+                  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+                  width: 400px;
+                  text-align: center;
+                }
+
+                #result {
+                  font-size: 1.3rem;
+                  font-weight: 600;
+                  margin-bottom: 20px;
+                  padding: 12px;
+                  background: #007bff;
+                  color: #fff;
+                  border-radius: 8px;
+                }
+
+                #history {
+                  margin-top: 15px;
+                  padding: 12px;
+                  background: #f9fafc;
+                  border-radius: 8px;
+                  text-align: left;
+                  font-size: 0.95rem;
+                  color: #444;
+                  max-height: 150px;
+                  overflow-y: auto;
+                }
+
+                #history b {
+                  display: block;
+                  margin-bottom: 8px;
+                  color: #007bff;
+                }
+
+                button {
+                  margin: 8px 0;
+                  padding: 12px 18px;
+                  border: none;
+                  border-radius: 8px;
+                  background: #007bff;
+                  color: #fff;
+                  font-size: 1rem;
+                  font-weight: 500;
+                  cursor: pointer;
+                  transition: background 0.2s ease;
+                }
+
+                button:hover {
+                  background: #0056b3;
+                }
+
+                a button {
+                  background: #28a745;
+                }
+
+                a button:hover {
+                  background: #1e7e34;
+                }
+        </style>
+    </head>
+    <body>
+        <div class="container">
+            <h3 id="result"></h3>
+            <button onclick="clearHistory()">🗑️ Clear History</button>
+            <div id="history"></div>
+            <br>
+            <a href="index.html"><button>🔙 New Calculation</button></a>
+        </div>
+
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const num1 = parseFloat(params.get("number1"));
+            const num2 = parseFloat(params.get("number2"));
+            const operation = params.get("operation");
+
+            let result = "";
+            if (operation == "➕Addition")
+            {
+                result = `${num1} + ${num2} = ${num1 + num2}`;
+            }
+            else  if (operation == "➖Subtraction")
+            {
+                result = `${num1} - ${num2} = ${num1 - num2}`;
+            }
+
+            else if (operation == "✖️Multiplication")
+            {
+                result = `${num1} * ${num2} = ${num1 * num2}`;
+            }
+            else if (operation == "➗Division")
+            {
+                if (num2 !==0) {
+                result = `${num1} ÷ ${num2} = ${num1 / num2}`;
+
+                }
+                else {
+                    result = "Error: Division by zero!";
+                }
+            }
+            else {
+                    result = "Invalid operation!";
+                }
+                
+            document.getElementById("result").innerHTML = `Result =  ${result}`;
+
+            // Save history in localStorage
+            let history = JSON.parse(localStorage.getItem("calcHistory")) || [];
+            history.push(result);
+            localStorage.setItem("calcHistory", JSON.stringify(history));
+
+            // Display history
+            let historyDiv = document.getElementById("history");
+            historyDiv.innerHTML = "<b>📜 History:</b><br>" + history.slice(-5).join("<br>");
+
+            // Clear history
+            function clearHistory() {
+                localStorage.removeItem("calcHistory");
+                history = [];
+                document.getElementById("history").innerHTML = "<b>📜 History:</b><br>No history yet.";
+            }
+
+        </script>
+    </body>
+</html>

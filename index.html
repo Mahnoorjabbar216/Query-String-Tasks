@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Query String Dashboard</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    body {
+      background: #f4f6f9;
+      color: #333;
+      display: flex;
+      height: 100vh;
+      overflow: hidden;
+    }
+    /* Main content */
+    .main {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      padding: 20px;
+      overflow-y: auto;
+    }
+
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 20px;
+      background: #dee5f0;
+      padding: 40px;
+    }
+
+    header h1 {
+      font-size: 1.8rem;
+      color: #2c3e50;
+      text-align: center;
+      margin-left: 600px;
+    }
+
+    /* Task Cards */
+    .grid {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      gap: 20px;
+    }
+
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      padding: 40px;
+      text-align: center;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      transition: all 0.3s ease;
+      cursor: pointer;
+    }
+
+    .card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 6px 20px rgba(0,0,0,0.15);
+    }
+
+    .card h3 {
+      margin: 15px 0 10px;
+      font-size: 1.2rem;
+      color: #2c3e50;
+    }
+
+    .card p {
+      font-size: 0.9rem;
+      color: #555;
+      width: 300px;
+    }
+
+    .card a {
+      display: inline-block;
+      margin-top: 10px;
+      text-decoration: none;
+      background: #3498db;
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 6px;
+      transition: background 0.3s;
+    }
+
+    .card a:hover {
+      background: #2980b9;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Main Content -->
+  <div class="main">
+    <header>
+      <h1>Welcome, User 👋</h1>
+    </header>
+
+    <!-- Task Cards -->
+    <div class="grid">
+      <div class="card">
+        <h3>Greeting App</h3>
+        <p>Displays a greeting message using query strings.</p>
+        <a href="task1.html">Open</a>
+      </div>
+      <div class="card">
+        <h3>Calculator App</h3>
+        <p>Perform calculations with query string inputs.</p>
+        <a href="task2.html">Open</a>
+      </div>
+      <div class="card">
+        <h3>Theme Switcher</h3>
+        <p>Switch between light, dark, and custom themes.</p>
+        <a href="task3.html">Open</a>
+      </div>
+      <div class="card">
+        <h3>Mini Product Viewer</h3>
+        <p>View product details using query strings.</p>
+        <a href="task4.html">Open</a>
+      </div>
+      <div class="card">
+        <h3>Quiz App</h3>
+        <p>Answer quiz questions passed via query string.</p>
+        <a href="task5.html">Open</a>
+      </div>
+    </div>
+  </div>
+</body>
+</html>

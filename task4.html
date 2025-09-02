@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+         <style>
+            * {
+                margin: 0;
+                padding: 0;
+                box-sizing: border-box;
+            }
+
+            body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                background: #f4f6f9;
+                padding: 30px;
+            }
+
+            .container {
+                margin: auto;
+                background: #fff;
+                padding: 30px 40px;
+                border-radius: 12px;
+                box-shadow: 0 6px 20px rgba(0, 0, 0, 0.15);
+                width: 350px;
+                text-align: center;
+                margin-top: 130px;
+            }
+
+            h1 {
+                margin-bottom: 25px;
+                color: #333;
+                font-size: 2rem;
+            }
+
+            ul {
+                list-style: none;
+                display: flex;
+                flex-direction: column;
+                justify-content: center;
+                align-items: center;
+                gap: 20px;
+                padding: 0;
+            }
+
+            li {
+              background: #fff;
+              border-radius: 12px;
+              box-shadow: 0 6px 15px rgba(0, 0, 0, 0.1);
+              transition: transform 0.2s ease, box-shadow 0.2s ease;
+              overflow: hidden;
+              text-align: left;
+            }
+
+            li:hover {
+              transform: translateY(-5px);
+              box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            }
+
+            a {
+              display: block;
+              text-decoration: none;
+              color: inherit;
+              padding: 15px;
+            }
+
+            .product-img {
+              width: 100%;
+              height: 180px;
+              object-fit: cover;
+              border-bottom: 1px solid #eee;
+            }
+
+            .product-name {
+              font-size: 1.1rem;
+              font-weight: 600;
+              margin: 10px 0 5px;
+              color: #222;
+            }
+
+            .product-price {
+              color: #007bff;
+              font-weight: 600;
+              margin-bottom: 8px;
+            }
+
+            .product-desc {
+              font-size: 0.9rem;
+              color: #666;
+            }
+          </style>
+          
+    </head>
+
+    <body>
+      <div class="container">
+          <h1>Products List</h1>
+          <ul id="product-list"></ul>
+      </div>
+
+      <script>
+        const products = [
+          {"id": 101 , "name": "Coffee Mug1" , "price": 1200 , img: "https://eveen.pk/cdn/shop/files/image_e960270f-346a-410f-9cd3-58d1cfb32fae.jpg?v=1714153690" , "Description": "Transparent Double Wall Cup"},
+          {"id": 102 , "name": "Coffee Mug2" , "price": 1500 , img: "https://eveen.pk/cdn/shop/files/F0B4E4A3-7013-4A9A-8D9F-3D99A1CA5E1B.jpg?v=1714191730" , "Description": "Volcano Mug Glass with Bamboo lid and straw"},
+          {"id": 103 , "name": "Coffee  Mug3" , "price": 1300 , img: "https://eveen.pk/cdn/shop/files/G3_d9a6e6c4-6334-4056-8783-35b2c2d85e87.webp?v=1716813711" , "Description": "Square Coffe Glass with Lid and Straw"}
+            ];
+
+        const list = document.getElementById("product-list");
+
+        products.forEach(p => {
+          const li = document.createElement("li");
+          li.innerHTML = `<a href= "product.html?id=${p.id}">${p.name} - $${p.price}</a>`;
+          list.appendChild(li);
+          });
+      </script>
+    </body>
+</html>

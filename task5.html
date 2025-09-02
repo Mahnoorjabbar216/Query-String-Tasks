@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+          <style>
+              body {
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                background: #f4f6f9;
+                margin: 0;
+                height: 100vh;
+                display: flex;
+                justify-content: center;
+                align-items: center;
+              }
+
+              .name-container {
+                background: #fff;
+                padding: 40px 30px;
+                border-radius: 12px;
+                box-shadow: 0 6px 18px rgba(0,0,0,0.1);
+                text-align: center;
+                width: 100%;
+                max-width: 400px;
+                animation: fadeIn 0.8s ease-in-out;
+              }
+
+              h1 {
+                color: #333;
+                margin-bottom: 10px;
+              }
+
+              h3 {
+                color: #555;
+                margin-bottom: 20px;
+                font-weight: normal;
+              }
+
+              input[type="text"] {
+                width: 90%;
+                padding: 12px 15px;
+                border: 1px solid #ccc;
+                border-radius: 8px;
+                font-size: 16px;
+                margin-bottom: 20px;
+                transition: border-color 0.3s ease;
+              }
+
+              input[type="text"]:focus {
+                border-color: #007bff;
+                outline: none;
+                box-shadow: 0 0 6px rgba(0,123,255,0.2);
+              }
+
+              button {
+                width: 100%;
+                padding: 12px;
+                background: #007bff;
+                color: #fff;
+                font-size: 16px;
+                border: none;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background 0.3s ease;
+              }
+
+              button:hover {
+                background: #0056b3;
+              }
+
+              @keyframes fadeIn {
+                from { opacity: 0; transform: translateY(20px); }
+                to { opacity: 1; transform: translateY(0); }
+              }
+  </style>
+    </head>
+    <body>
+        <form action="quiz.html" method="get">
+            <div class="name-container">
+                <h1>Quiz</h1>
+                <h3>Enter your Name</h3>
+                <input type="text" name="name" placeholder="Name" required>
+                <button type="submit">Enter</button>
+            </div>
+        </form>
+    </body>
+</html>

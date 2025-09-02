@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+        <style>
+          body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            background: #f8f9fa;
+            color: #333;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+          }
+
+          h1 {
+            margin: 20px 0;
+            color: #2c3e50;
+            font-size: 2rem;
+            text-align: center;
+          }
+
+          /* Product Card */
+          #product {
+            background: #fff;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 6px 16px rgba(0,0,0,0.1);
+            max-width: 450px;
+            text-align: center;
+            transition: transform 0.3s ease;
+          }
+
+          #product:hover {
+            transform: translateY(-5px);
+          }
+
+          #product img {
+            width: 100%;
+            max-height: 320px;
+            object-fit: contain;
+            border-radius: 10px;
+            margin-bottom: 15px;
+          }
+
+          #product h2 {
+            margin: 10px 0;
+            font-size: 1.6rem;
+            color: #34495e;
+          }
+
+          #product h4 {
+            font-size: 1.1rem;
+            color: #7f8c8d;
+            margin: 8px 0;
+            font-style: italic;
+          }
+
+          #product p {
+            font-size: 1.2rem;
+            color: #27ae60;
+            font-weight: bold;
+            margin: 12px 0;
+          }
+
+          .stars {
+            display: flex;
+            justify-content: center;
+            gap: 5px;
+            margin: 15px 0;
+            font-size: 1.5rem;
+            cursor: pointer;
+            color: #ccc;
+          }
+
+          .stars .star.active {
+            color: gold;
+          }
+
+          button{
+            width: 100%;
+            padding: 12px 15px;
+            border: none;
+            border-radius: 8px;
+            background: #007bff;
+            color: #fff;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.2s ease;
+          }
+        </style>
+    </head>
+    <body>
+        <h1>Product Details</h1>
+        <div id="product"></div>
+
+        <script>
+            const products = [
+                {"id": 101 , "name": "Coffes Mug1" , "price": 1200 , img: "https://eveen.pk/cdn/shop/files/image_e960270f-346a-410f-9cd3-58d1cfb32fae.jpg?v=1714153690" , "Description": "Transparent Double Wall Cup"},
+                {"id": 102 , "name": "Coffee Mug2" , "price": 1500 , img: "https://eveen.pk/cdn/shop/files/F0B4E4A3-7013-4A9A-8D9F-3D99A1CA5E1B.jpg?v=1714191730" , "Description": "Volcano Mug Glass with Bamboo lid and straw"},
+                {"id": 103 , "name": "Coffee Mug3" , "price": 1300 , img: "https://eveen.pk/cdn/shop/files/G3_d9a6e6c4-6334-4056-8783-35b2c2d85e87.webp?v=1716813711" , "Description": "Square Coffe Glass with Lid and Straw"}
+            ];
+
+            const params = new URLSearchParams(window.location.search);
+            const id = parseInt(params.get("id"));
+
+            const product  = products.find(p => p.id === id);
+
+            const container = document.getElementById("product");
+            if (product) {
+                container.innerHTML = `<img src="${product.img}" alt="${product.name}">
+                                        <h2>${product.name}</h2>
+                                        <h4>${product.Description}</h4>
+                                        <p>Price: $${product.price}</p>
+                                        <div class="stars" id="stars">
+                                          <span class="star">★</span>
+                                          <span class="star">★</span>
+                                          <span class="star">★</span>
+                                          <span class="star">★</span>
+                                          <span class="star">★</span>
+                                        </div>
+                                        <button onclick = addCart()>Add to Cart</button>`;
+            }
+            else {
+                container.innerHTML = "<p>Product not found.</p>";
+            }
+
+            document.addEventListener("DOMContentLoaded", () => {
+            const stars = document.querySelectorAll("#stars .star");
+            stars.forEach((star, index) => {
+              star.addEventListener("click", () => {
+                stars.forEach((s, i) => {
+                  s.classList.toggle("active", i <= index);
+                });
+                alert(`You rated this ${index + 1} stars!`);
+              });
+            });
+          });
+
+            function addCart(){
+              alert("item is added into the cart");
+            }
+        </script>
+    </body>
+</html>

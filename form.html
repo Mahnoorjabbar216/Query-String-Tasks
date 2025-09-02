@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+        <title>Greeting App</title>
+        <style>
+            * {
+              margin: 0;
+              padding: 0;
+              box-sizing: border-box;
+            }
+
+
+            body {
+              margin: 0;
+              height: 100vh;
+              display: flex;
+              justify-content: center;
+              align-items: center;
+              font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+              background: linear-gradient(-45deg, #ff9a9e, #fad0c4, #a1c4fd, #c2e9fb);
+              background-size: 400% 400%;
+              animation: gradientBG 15s ease infinite;
+            }
+
+            @keyframes gradientBG {
+              0% { background-position: 0% 50%; }
+              50% { background-position: 100% 50%; }
+              100% { background-position: 0% 50%; }
+            }
+
+
+            #greetings {
+              font-size: 2rem;
+              font-weight: 600;
+              background: rgba(255, 255, 255, 0.1);
+              padding: 20px 30px;
+              border-radius: 12px;
+              box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
+              animation: fadeIn 1.2s ease-in-out;
+            }
+
+            /* Smooth fade animation */
+            @keyframes fadeIn {
+              from {
+                opacity: 0;
+                transform: translateY(20px);
+              }
+              to {
+                opacity: 1;
+                transform: translateY(0);
+              }
+            }
+        </style>
+    </head>
+    <body>
+        <h2 id="greetings"></h2>
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const name = params.get("name");
+
+            //Greetings based on time
+            const hours = new Date().getHours();
+              let timeGreeting = "";
+
+              if (hours < 12) {
+                timeGreeting = "Good Morning";
+                
+                document.body.style.background = "linear-gradient(135deg, #FFD580, #FFF4C3)"; // morning
+              } else if (hours < 17) {
+                timeGreeting = "Good Afternoon";
+
+                document.body.style.background = "linear-gradient(135deg, #87CEFA, #00BFFF)"; // afternoon
+              } else {
+                timeGreeting = "Good Evening";
+                
+                document.body.style.background = "linear-gradient(135deg, #2c3e50, #000428)"; // evening
+              }
+            document.getElementById("greetings").innerHTML = `${timeGreeting}, hello ${name}!🌟 Welcome Back.`;
+        </script>
+    </body>
+</html>

@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">  
+          <style>
+              body {
+                font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+                background: linear-gradient(135deg, #f0f4f8, #d9e4ec);
+                margin: 0;
+                padding: 40px;
+                color: #333;
+              }
+
+              .quiz-container {
+                max-width: 700px;
+                margin: auto;
+                background: #fff;
+                padding: 30px;
+                border-radius: 16px;
+                box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+                transition: transform 0.2s ease;
+              }
+
+              .quiz-container:hover {
+                transform: translateY(-3px);
+              }
+
+              h1 {
+                text-align: center;
+                margin-bottom: 25px;
+                color: #2c3e50;
+                font-size: 28px;
+              }
+
+              .question {
+                margin-bottom: 20px;
+                padding: 15px;
+                border: 1px solid #eee;
+                border-radius: 10px;
+                background: #fafafa;
+                transition: background 0.3s;
+              }
+
+              .question:hover {
+                background: #f5f9ff;
+              }
+
+              .question p {
+                font-weight: bold;
+                margin-bottom: 10px;
+                color: #2c3e50;
+              }
+
+              label {
+                display: block;
+                padding: 8px 12px;
+                border-radius: 8px;
+                cursor: pointer;
+                transition: background 0.2s, transform 0.1s;
+              }
+
+              label:hover {
+                background: #eef5ff;
+                transform: translateX(3px);
+              }
+
+              input[type="radio"] {
+                margin-right: 8px;
+                accent-color: #4CAF50; /* Modern green tick */
+              }
+
+              button {
+                width: 100%;
+                padding: 14px;
+                background: #4CAF50;
+                color: white;
+                border: none;
+                border-radius: 10px;
+                cursor: pointer;
+                font-size: 16px;
+                font-weight: bold;
+                transition: background 0.3s, transform 0.2s;
+              }
+
+              button:hover {
+                background: #43a047;
+                transform: scale(1.02);
+              }
+  </style>
+    </head>
+    <body>
+        <h1>Quiz</h1>
+        <form id="quizForm" action="result.html" method="get">
+            <div class="question">
+                <p>1. Which planet is known as the Red Planet?</p>
+                <label><input type="radio" name="q1" value="Mars"> Mars</label>
+                <label><input type="radio" name="q1" value="Venus"> Venus</label>
+                <label><input type="radio" name="q1" value="Jupiter"> Jupiter</label>
+            </div>
+
+            <div class="question">
+                <p>2. What does HTML stand for?</p>
+                <label><input type="radio" name="q2" value="HyperText Markup Language"> HyperText Markup Language</label>
+                <label><input type="radio" name="q2" value="HighText Machine Language"> HighText Machine Language</label>
+                <label><input type="radio" name="q2" value="Hyperlink Text Making Language"> Hyperlink Text Making Language</label>
+            </div>
+
+            <div class="question">
+                <p>3. In computer science, what does “OOP” stand for?</p>
+                <label><input type="radio" name="q3" value="Object Oriented Programming"> Object Oriented Programming</label>
+                <label><input type="radio" name="q3" value="Order Of Processing"> Order Of Processing</label>
+                <label><input type="radio" name="q3" value="Online Operating Protocol"> Online Operating Protocol</label>
+            </div>
+
+            <div class="question">
+                <p>4. Who painted the Mona Lisa?</p>
+                <label><input type="radio" name="q4" value="Da Vinci"> Leonardo da Vinci</label>
+                <label><input type="radio" name="q4" value="Michelangelo"> Michelangelo</label>
+                <label><input type="radio" name="q4" value="Picasso"> Pablo Picasso</label>
+            </div>
+
+            <div class="question">
+                <p>5. What is the chemical symbol for gold?</p>
+                <label><input type="radio" name="q5" value="Au"> Au</label>
+                <label><input type="radio" name="q5" value="Ag"> Ag</label>
+                <label><input type="radio" name="q5" value="Pb"> Pb</label>
+            </div>
+
+            <div >
+                <button type="submit">Submit</button>
+            </div>
+        </form>
+
+        <script>
+            const params = new URLSearchParams(window.location.search);
+            const user = params.get("name");
+
+            const correctAnswers = {
+                q1: "Mars",
+                q2: "HyperText Markup Language",
+                q3: "Object Oriented Programming",
+                q4: "Da Vinci",
+                q5: "Au"
+            };
+
+            document.getElementById("quizForm").addEventListener("submit", function(e) {
+            e.preventDefault();
+            let score = 0;
+            for (let q in correctAnswers) {
+                const answer = document.querySelector(`input[name="${q}"]:checked`);
+                if (answer && answer.value === correctAnswers[q]) {
+                score++;
+                }
+            }
+             window.location.href = `result.html?name=${user}&score=${score}`;
+            });
+        </script>
+    </body>
+</html>
